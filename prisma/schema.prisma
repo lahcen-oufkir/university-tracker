@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Application {
+  id                 Int      @id @default(autoincrement())
+  school             String
+  city               String
+  program            String
+  level              String
+  applicationDate    String?
+  deadline           String?
+  examDate           String?
+  expectedResultDate String?
+  status             String   @default("To Apply")
+  result             String   @default("Not Published")
+  officialLink       String?
+  resultsLink        String?
+  notes              String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("applications")
+}
